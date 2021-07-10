@@ -1,5 +1,4 @@
-ARG PHP_VERSION=""
-FROM php:${PHP_VERSION}-fpm
+FROM php:7.4-fpm
 RUN apt-get update && apt-get install --no-install-recommends -y libpq-dev \
   zlib1g-dev \
   libzip-dev \
