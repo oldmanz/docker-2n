@@ -1,9 +1,10 @@
-FROM jupyter/scipy-notebook
+ 
+FROM python:3.7
 
-# COPY . /
+WORKDIR /data
 
-# RUN pip install -r requirements.txt
+RUN pip install jupyter -U && pip install jupyterlab
 
-RUN pip install awscli
+EXPOSE 8888
 
-CMD ["jupyter", "notebook"]
+ENTRYPOINT ["jupyter", "lab","--ip=0.0.0.0","--allow-root"]

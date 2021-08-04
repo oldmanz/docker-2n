@@ -15,13 +15,14 @@ services:
     restart: always
     build:
       context: './python/'
-    ports:
-      - "8888:8888"
+      args:
+       PYTHON_VERSION: ${PYTHON_VERSION}
     networks:
       - backend
+    ports:
+      - "10000:8888"
     volumes:
-      - ${PYTHON_ROOT}/config:/~/.jupyter
-      - ${PYTHON_ROOT}/data:/data
+      - ${PROJECT_ROOT}/:/var/www/html/
     container_name: python
   apache:
     restart: always
